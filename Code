@@ -1,92 +1,101 @@
-#include<iostream>
-#include<math.h>
+#include <iostream>
+#include <cmath>
 
 using namespace std;
 
-int main()
-{
-    float num1, num2, result;
+int main() {
     int choice;
+    double num1, num2, result;
+    char op;
+    bool exitProgram = false;
 
-    cout << "Select operation:" << endl;
-    cout << "1. Add" << endl;
-    cout << "2. Subtract" << endl;
-    cout << "3. Multiply" << endl;
-    cout << "4. Divide" << endl;
-    cout << "5. Power" << endl;
-    cout << "6. Square" << endl;
-    cout << "7. Cube" << endl;
-    cout << "8. Square root" << endl;
-    cout << "9. Cube root" << endl;
-    cout << "10. Modulus" << endl;
-    cout << "11. Floor division" << endl;
-    cout << "12. Ceiling division" << endl;
-    cout << "13. Absolute value" << endl;
-    cout << "14. Logarithm" << endl;
-    cout << "15. Natural logarithm" << endl;
-    cout << "16. Sine" << endl;
-    cout << "17. Cosine" << endl;
-    cout << "18. Tangent" << endl;
-    cout << "19. Inverse sine" << endl;
-    cout << "20. Inverse cosine" << endl;
+    do {
+        cout << " меню " << endl;
+        cout << "1. Добавить" << endl;
+        cout << "2. вычет " << endl;
+        cout << "3. умножение" << endl;
+        cout << "4. разделение" << endl;
+        cout << "5. сила" << endl;
+        cout << "6. квадратный корень" << endl;
+        cout << "7. выход" << endl;
+        cout << "выберите действия: ";
+        cin >> choice;
 
-    cout << "Enter choice (1-20): ";
-    cin >> choice;
+        switch (choice) {
+            case 1:
+                cout << "напишите первую любую цифру: ";
+                cin >> num1;
+                cout << "напишите любую вторую цифру: ";
+                cin >> num2;
+                result = num1 + num2;
+                cout << "результат: " << result << endl;
+                break;
+            case 2:
+                cout << "напишите первую любую цифру: ";
+                cin >> num1;
+                cout << "напишите любую вторую цифру: ";
+                cin >> num2;
+                result = num1 - num2;
+                cout << "результат: " << result << endl;
+                break;
+            case 3:
+                cout << "напишите первую любую цифру: ";
+                cin >> num1;
+                cout << "напишите любую вторую цифру: ";
+                cin >> num2;
+                result = num1 * num2;
+                cout << "результат: " << result << endl;
+                break;
+            case 4:
+                cout << "напишите первую любую цифру: ";
+                cin >> num1;
+                cout << "напишите любую вторую цифру:: ";
+                cin >> num2;
+                if (num2 == 0) {
+                    cout << "ошибка: нельзя разделать на ноль" << endl;
+                } else {
+                    result = num1 / num2;
+                    cout << "результат: " << result << endl;
+                }
+                break;
+            case 5:
+                cout << "напишите первую любую цифру: ";
+                cin >> num1;
+                cout << "напишите экспонент: ";
+                cin >> num2;
+                result = pow(num1, num2);
+                cout << "результат: " << result << endl;
+                break;
+            case 6:
+                cout << "напишите любую цифру: ";
+                cin >> num1;
+                if (num1 < 0) {
+                    cout << "Ошибка: невозможно извлечь квадратный корень из отрицательного числа" << endl;
+                } else {
+                    result = sqrt(num1);
+                    cout << "результат: " << result << endl;
+                }
+                break;
+            case 7:
+                cout << "выход..." << endl;
+                exitProgram = true;
+                break;
+            default:
+                cout << "ошибка : неправылний выбор" << endl;
+                break;
+        }
+        cout << endl;
 
-    switch(choice)
-    {
-        case 1:
-            cout << "Enter first number: ";
-            cin >> num1;
-            cout << "Enter second number: ";
-            cin >> num2;
-            result = num1 + num2;
-            cout << num1 << " + " << num2 << " = " << result;
-            break;
-        case 2:
-            cout << "Enter first number: ";
-            cin >> num1;
-            cout << "Enter second number: ";
-            cin >> num2;
-            result = num1 - num2;
-            cout << num1 << " - " << num2 << " = " << result;
-            break;
-        case 3:
-            cout << "Enter first number: ";
-            cin >> num1;
-            cout << "Enter second number: ";
-            cin >> num2;
-            result = num1 * num2;
-            cout << num1 << " * " << num2 << " = " << result;
-            break;
-        case 4:
-            cout << "Enter first number: ";
-            cin >> num1;
-            cout << "Enter second number: ";
-            cin >> num2;
-            result = num1 / num2;
-            cout << num1 << " / " << num2 << " = " << result;
-            break;
-        case 5:
-            cout << "Enter base number: ";
-            cin >> num1;
-            cout << "Enter exponent: ";
-            cin >> num2;
-            result = pow(num1, num2);
-            cout << num1 << "^" << num2 << " = " << result;
-            break;
-        case 6:
-            cout << "Enter a number: ";
-            cin >> num1;
-            result = num1 * num1;
-            cout << "Square of " << num1 << " = " << result;
-            break;
-        case 7:
-            cout << "Enter a number: ";
-            cin >> num1;
-            result = num1 * num1 * num1;
-            cout << "Cube of " << num1 << " = " << result;
-            break;
-        case 8:
-            cout << "Enter a number: ";
-            cin
+        if (!exitProgram) {
+            char choice;
+            cout << "хотите продолжить? (y/n): ";
+            cin >> choice;
+            if (choice == 'n' || choice == 'N') {
+                exitProgram = true;
+                cout << "выход..." << endl;
+            }
+        }
+    } while (!exitProgram);
+
+    return 0;
+}
